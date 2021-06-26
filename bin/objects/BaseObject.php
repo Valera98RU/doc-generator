@@ -10,6 +10,7 @@ abstract class BaseObject implements IObject
     private $objectTag;
     private array $styles;
     private array $attributes;
+    protected string $content;
 
     /**
      * @return mixed
@@ -20,9 +21,9 @@ abstract class BaseObject implements IObject
     }
 
     /**
-     * @param mixed $objectTag
+     * @param string $objectTag
      */
-    public function setObjectTag($objectTag): void
+    public function setObjectTag(string $objectTag): void
     {
         $this->objectTag = $objectTag;
     }
@@ -77,42 +78,61 @@ abstract class BaseObject implements IObject
     }
 
 
-    public abstract function setContent();
+    public function setContent(string $content)
+    {
+        $this->content = $content;
+    }
+
     public abstract function getContent();
 
-    public function generateObjectCode():string{
+    public function generateObject(): string
+    {
         return $this->generateHtml();
     }
 
 
-    private function generateHtml():string{
+    private function generateHtml(): string
+    {
         $style = $this->getStyles();
         $attribute = $this->getAttributes();
-        $objectHtmlCode = "<".$this->objectTag.">";
-        $objectHtmlCode.= $this->getContent();
-        $objectHtmlCode.="</".$this->objectTag.">";
+        $objectHtmlCode = "<" . $this->objectTag . ">";
+        $objectHtmlCode .= $this->getContent();
+        $objectHtmlCode .= "</" . $this->objectTag . ">";
 
-        return$objectHtmlCode;
+        return $objectHtmlCode;
 
     }
-    private function getStyles(): string{
-        $style = implode(";",$this->styles);
+
+    private function getStyles(): string
+    {
+        $style = implode(";", $this->styles);
         return $style;
     }
-    private function getAttributes(): string{
-        if(!key_exists("style",$this->attributes)){
-            $this->addAttribute("style",$this->getStyles());
+
+    protected function getAttributes(): string
+    {
+        if (!key_exists("style", $this->attributes)) {
+            $this->addAttribute("style", $this->getStyles());
         }
-        $attribute = implode(" ",$this->attributes);
+        $attribute = implode(" ", $this->attributes);
 
         return $attribute;
     }
-    public function addAttribute(string $attribute, $value){
-        array_push($this->attributes,$attribute."='".$value."'");
+
+    public function addAttribute(string $attribute, $value)
+    {
+        array_push($this->attributes, $attribute . "='" . $value . "'");
 
     }
-    public function addStyleParameter(string $parameter,$value){
-        array_push($this->styles,$parameter.":".$value);
+
+    public function addStyleParameter(string $parameter, $value)
+    {
+        array_push($this->styles, $parameter . ":" . $value);
+    }
+
+    public function setTitle(string $title)
+    {
+        $this->addAttribute('title', $this);
     }
 
 

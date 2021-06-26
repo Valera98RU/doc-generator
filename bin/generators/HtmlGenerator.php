@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\generators;
+namespace docGenerator\bin\generators;
 
 class HtmlGenerator implements IDocGenerator
 {

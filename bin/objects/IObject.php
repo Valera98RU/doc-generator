@@ -3,5 +3,5 @@
 
 interface IObject
 {
-    public function getObjectFromHtml();
+    public function generateObject();
 }

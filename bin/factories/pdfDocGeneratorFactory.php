@@ -1,10 +1,10 @@
 <?php
 
 
-namespace bin\factories;
+namespace docGenerator\bin\factories;
 
-use bin\generators\IDocGenerator;
-use bin\generators\pdfGenerator;
+use docGenerator\bin\generators\IDocGenerator;
+use docGenerator\bin\generators\pdfGenerator;
 
 class pdfDocGeneratorFactory implements IDocFactory
 {

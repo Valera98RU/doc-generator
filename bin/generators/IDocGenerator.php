@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\generators;
+namespace docGenerator\bin\generators;
 interface IDocGenerator
 {
     public function generate();
