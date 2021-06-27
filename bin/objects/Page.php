@@ -8,14 +8,18 @@ class Page extends BaseContainer
         $this->setObjectTag('div');
     }
 
-    public function addTable(Table $table)
+    public function addTable():Table
     {
+        $table = new Table();
         $this->addChild($table);
+        return $table;
     }
 
-    public function addList(ListContainer $list)
+    public function addList():ListContainer
     {
+        $list = new ListContainer();
         $this->addChild($list);
+        return $list;
     }
 
 

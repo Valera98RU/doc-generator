@@ -8,9 +8,11 @@ class TableHead extends BaseContainer
         $this->setObjectTag('thead');
     }
 
-    public function addRow(TableRow $row)
+    public function addRow():TableRow
     {
+        $row = new TableRow();
         $this->addChild($row);
+        return $row;
     }
 
     public function setAlign($align)

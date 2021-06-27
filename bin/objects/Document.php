@@ -15,12 +15,14 @@ class Document extends BaseContainer
         $this->setObjectTag('body');
     }
 
-    public function setHead(Head $head)
+    public function setHead():Head
     {
+        $head = new Head();
         $this->head = $head;
+        return $head;
     }
 
-    protected function getHeader(): string
+    protected function getHead(): string
     {
         return $this->head;
     }
@@ -33,15 +35,20 @@ class Document extends BaseContainer
         return $html;
     }
 
-    public function addTable(Table $table)
+    public function addPage(): Page
     {
-        $this->addChild($table);
+        $page = new Page();
+        $this->addChild($page);
+        return $page;
+
     }
 
 
-    public function setFooter(Footer $footer)
+    public function setFooter():Footer
     {
+        $footer = new Footer();
         $this->footer = $footer;
+        return $footer;
     }
 
     protected function getFooter(): string

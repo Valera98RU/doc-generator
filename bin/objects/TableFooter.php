@@ -8,9 +8,11 @@ class TableFooter extends BaseContainer
         $this->setObjectTag('tfoot');
     }
 
-    public function addRow(TableRow $row)
+    public function addRow():TableRow
     {
+        $row = new TableRow();
         $this->addChild($row);
+        return $row;
     }
 
     public function setAlign($align)

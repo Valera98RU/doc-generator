@@ -8,9 +8,11 @@ class ListContainer extends BaseContainer
         $this->setObjectTag('ul');
     }
 
-    public function addItem(ListItem $listItem)
+    public function addItem():ListItem
     {
-        $this->addChild($listItem);
+        $item = new ListItem();
+        $this->addChild($item);
+        return $item;
     }
 
     public function setType($type)

@@ -4,15 +4,17 @@ namespace docGenerator\bin\generators;
 
 class pdfGenerator implements IDocGenerator
 {
-    private \Document $document;
+    private \pdfDocument $document;
 
     public function createDocument()
     {
-        return $this->document = new \Document();
+        return $this->document = new \pdfDocument();
     }
 
     public function generate()
     {
-        // TODO: Implement generate() method.
+        $this->document->getDocument();
     }
+
+
 }

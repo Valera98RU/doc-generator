@@ -7,7 +7,7 @@ class docGenerator
     const WORD_DOC_TYPE = 'word';
     const HTML_DOC_TYPE = 'html';
 
-    private \bin\generators\IDocGenerator $docGenerator;
+    private docGenerator\bin\generators\IDocGenerator $docGenerator;
     private  $vocabulary;
 
     public function __constructor(string $docType){
@@ -23,6 +23,7 @@ class docGenerator
     public function generateDocument($templateFileName){
         $this->setVocabulary($templateFileName);
         $actionArray = array();//TODO parse template on action array
+
         foreach ($actionArray as $action=>$value){
 
             $this->doAction($this->vocabulary[$action],$value);

@@ -7,9 +7,11 @@ class TableBody extends BaseContainer
     {
         $this->setObjectTag('tbody');
     }
-    public function addRow(TableRow $row)
+    public function addRow():TableRow
     {
+        $row = new TableRow();
         $this->addChild($row);
+        return $row;
     }
 
     public function setAlign($align)
