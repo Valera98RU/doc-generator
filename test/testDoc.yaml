@@ -11,7 +11,7 @@ document:
           cellspacing: '2'
           align: 'center'
 
-          margin: 5
+          margin: 10
           tHead:
             - row:
                 nobr: true

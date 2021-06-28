@@ -6,6 +6,7 @@
   "cellpadding": "setCellPadding",
   "cellspacing": "setCellSpacing",
   "nobr": "setNobr",
+  "textStyle": "setTextStyle",
   "list": "addList",
   "item":"addItem",
   "heading": "addHeading",

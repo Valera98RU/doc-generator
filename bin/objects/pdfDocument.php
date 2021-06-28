@@ -63,7 +63,6 @@ class pdfDocument extends Document
 
         foreach ($this->pages as $page) {
             $this->pdfDocument->AddPage();
-            var_dump($page->generateObject());
 
             $this->pdfDocument->writeHTML($page->generateObject());
         }

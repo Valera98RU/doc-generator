@@ -132,6 +132,9 @@ abstract class BaseObject implements IObject
         array_push($this->attributes, $attribute . "='" . $value . "'");
 
     }
+    public function setTextStyle(string $testStyle){
+       // $this->addStyleParameter('font');
+    }
 
     public function addStyleParameter(string $parameter, $value)
     {
