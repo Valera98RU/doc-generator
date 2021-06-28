@@ -32,7 +32,7 @@ class pdfDocument extends Document
     private $fontStyle = '';
     private $fontSize = 14;
     private $fontFile = '';
-    private $docName = 'pdfDocument.pdf';
+    private $docName = 'pdfDoc.pdf';
     /** @var array<Page> */
     private $pages = [];
 
@@ -63,9 +63,11 @@ class pdfDocument extends Document
 
         foreach ($this->pages as $page) {
             $this->pdfDocument->AddPage();
-
-            $this->pdfDocument->writeHTML($page->generateObject());
+            $html  = $page->generateObject();
+            var_dump($html);
+            $this->pdfDocument->writeHTML($html,true, false, false, false, '');
         }
+
         ob_end_clean();
         $this->pdfDocument->Output($this->docName, 'I');
 
