@@ -1,6 +1,9 @@
 {
   "require": {
     "tecnickcom/tcpdf": "^6.2.13",
-    "phpoffice/phpword": "v0.18.*"
+    "phpoffice/phpword": "v0.18.*",
+    "nette/robot-loader": "^3.0",
+    "ext-json": "*",
+    "symfony/yaml": "5.4.x-dev"
   }
 }

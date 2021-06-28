@@ -3,10 +3,15 @@
 
 class Heading extends BaseObject
 {
+    private $level = 1;
 
-    public function __construct(string $level)
+    public function __construct()
     {
-        $this->setObjectTag('h'.$level);
+        $this->setObjectTag('h'.$this->level);
+    }
+
+    public function setLevel(int $level){
+        $this->level = $level;
     }
 
     public function getContent()

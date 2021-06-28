@@ -14,4 +14,8 @@ class TableRow extends BaseContainer
         $this->addChild($cell);
         return $cell;
     }
+
+    public function setNobr(string $nobr){
+        $this->addAttribute('nobr', $nobr);
+    }
 }

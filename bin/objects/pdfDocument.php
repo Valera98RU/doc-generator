@@ -27,18 +27,20 @@ class pdfDocument extends Document
     private $footerMargin = PDF_MARGIN_FOOTER;
     private $autoPageBreak = true;
     private $imageScaleRatio = PDF_IMAGE_SCALE_RATIO;
-    private $fontSubsetting= true;
+    private $fontSubsetting = true;
     private $fontFamily = 'dejavusans';
     private $fontStyle = '';
     private $fontSize = 14;
     private $fontFile = '';
     private $docName = 'pdfDocument.pdf';
+    /** @var array<Page> */
+    private $pages = [];
 
 
     public function getDocument()
     {
-        $this->pdfDocument->setHeaderData($this->headerLogo, $this->logoWidth, $this->headerString, $this->headerTitleColor, $this->headerTextColor);
-        $this->pdfDocument->setFooterData($this->footerTextColor, $this->footerLineColor);
+        $this->pdfDocument->setHeaderData($this->headerLogo, $this->logoWidth, $this->headerString);
+        $this->pdfDocument->setFooterData();
 
         $this->pdfDocument->setHeaderFont(array($this->headerFontFamily, $this->headerFontStyle, $this->headerFontSizePt));
         $this->pdfDocument->setHeaderFont(array($this->footerFontFamily, $this->footerFontStyle, $this->footerFontSizePt));
@@ -55,44 +57,62 @@ class pdfDocument extends Document
 
         $this->pdfDocument->setFontSubsetting($this->fontSubsetting);
 
-        $this->pdfDocument->SetFont($this->fontFamily,$this->fontStyle,$this->fontSize,$this->fontFile);
+        $this->pdfDocument->SetFont($this->fontFamily, $this->fontStyle, $this->fontSize, $this->fontFile);
 
 
+
+        foreach ($this->pages as $page) {
+            $this->pdfDocument->AddPage();
+            var_dump($page->generateObject());
+
+            $this->pdfDocument->writeHTML($page->generateObject());
+        }
+        ob_end_clean();
         $this->pdfDocument->Output($this->docName, 'I');
 
     }
-    public function setName(string $name){
+
+    public function setName(string $name)
+    {
         $this->docName = $name;
     }
 
-    public function setPage(Page $page){
-
-        $this->pdfDocument->AddPage();
-        $this->pdfDocument->writeHTML($page->generateObject());
+    public function addPage(): Page
+    {
+        $page = new Page();
+        array_push($this->pages, $page);
+        return $page;
     }
 
-    public function setFontFile(string $file){
+    public function setFontFile(string $file)
+    {
         $this->fontFile = $file;
     }
 
-    public function setFontSize(int $fontSizePt){
+    public function setFontSize(int $fontSizePt)
+    {
         $this->fontSize = $fontSizePt;
     }
 
 
-    public function setFontStyle(string $style){
+    public function setFontStyle(string $style)
+    {
         $this->fontStyle = $style;
     }
 
-    public function setFontFamily(string $fontFamily){
+    public function setFontFamily(string $fontFamily)
+    {
         $this->fontFamily = $fontFamily;
     }
-    public function setFontSubsetting(bool $fontSubsetting){
+
+    public function setFontSubsetting(bool $fontSubsetting)
+    {
         $this->fontSubsetting = $fontSubsetting;
     }
 
 
-    public function setImageScale(float $imageScale){
+    public function setImageScale(float $imageScale)
+    {
         $this->imageScaleRatio = $imageScale;
     }
 

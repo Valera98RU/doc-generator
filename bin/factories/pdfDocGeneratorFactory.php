@@ -1,8 +1,9 @@
 <?php
 
 
-namespace docGenerator\bin\factories;
+namespace docGenerator\bin;
 
+use docGenerator\bin\factories\IDocFactory;
 use docGenerator\bin\generators\IDocGenerator;
 use docGenerator\bin\generators\pdfGenerator;
 

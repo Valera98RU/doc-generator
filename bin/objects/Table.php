@@ -29,4 +29,13 @@ class Table extends BaseContainer
         $this->addChild($body);
         return $body;
     }
+    public function setCellPadding(string $CellPadding){
+        $this->addAttribute('cellpadding',$CellPadding);
+    }
+    public function setCellSpacing(string $cellspacing){
+        $this->addAttribute('cellspacing',$cellspacing);
+    }
+    public function setAlign(string $align){
+        $this->addAttribute('align',$align);
+    }
 }

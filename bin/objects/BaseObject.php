@@ -7,11 +7,16 @@ abstract class BaseObject implements IObject
     private $margin;
     private $padding;
     private $color;
+    private $border;
     private $objectTag;
-    private array $styles;
-    private array $attributes;
-    protected string $content;
+    private array $styles = [];
+    private array $attributes = [];
+    protected string $content = "";
 
+    public function setBorder(string $border){
+        $this->border = $border;
+        $this->addAttribute('border',$border);
+    }
     /**
      * @return mixed
      */
@@ -43,6 +48,7 @@ abstract class BaseObject implements IObject
     public function setMargin($margin): void
     {
         $this->margin = $margin;
+        $this->addStyleParameter('margin',$margin."px");
     }
 
     /**
@@ -59,6 +65,7 @@ abstract class BaseObject implements IObject
     public function setPadding($padding): void
     {
         $this->padding = $padding;
+        $this->addStyleParameter('padding',$padding."px");
     }
 
     /**
@@ -75,6 +82,7 @@ abstract class BaseObject implements IObject
     public function setColor($color): void
     {
         $this->color = $color;
+        $this->addStyleParameter('color',$color);
     }
 
 
@@ -93,9 +101,9 @@ abstract class BaseObject implements IObject
 
     private function generateHtml(): string
     {
-        $style = $this->getStyles();
+
         $attribute = $this->getAttributes();
-        $objectHtmlCode = "<" . $this->objectTag . ">";
+        $objectHtmlCode = "<" . $this->objectTag . " ".$attribute. " >";
         $objectHtmlCode .= $this->getContent();
         $objectHtmlCode .= "</" . $this->objectTag . ">";
 
@@ -111,7 +119,7 @@ abstract class BaseObject implements IObject
 
     protected function getAttributes(): string
     {
-        if (!key_exists("style", $this->attributes)) {
+        if (!key_exists("style", $this->attributes) and !empty($this->styles)) {
             $this->addAttribute("style", $this->getStyles());
         }
         $attribute = implode(" ", $this->attributes);

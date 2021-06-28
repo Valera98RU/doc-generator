@@ -6,7 +6,7 @@ abstract class BaseContainer extends BaseObject implements IContainer
     /**
      * @var array<BaseObject>
      */
-    protected array $childs;
+    protected $childs = [];
 
     protected function addChild(BaseObject $child)
     {
@@ -33,9 +33,9 @@ abstract class BaseContainer extends BaseObject implements IContainer
         return $this->childs;
     }
 
-    public function addHeading(string $level): Heading
+    public function addHeading(): Heading
     {
-        $heading = new Heading($level);
+        $heading = new Heading();
         $this->addChild($heading);
         return $heading;
     }
