@@ -16,6 +16,7 @@ class TableRow extends BaseContainer
     }
 
     public function setNobr(string $nobr){
-        $this->addAttribute('nobr', $nobr);
+
+        $this->addAttribute('nobr', $nobr=='1'?"true":"false");
     }
 }

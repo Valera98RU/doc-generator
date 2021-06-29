@@ -37,5 +37,6 @@
   "char": "setChar",
   "charOff": "setCharOff",
   "valign": "setValign",
-  "cell": "addCell"
+  "cell": "addCell",
+  "fontSize": "setFontsize"
 }

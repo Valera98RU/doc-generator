@@ -1,33 +1,37 @@
 document:
-  - page:
+  fontSize: 10
+  pages:
+   - page:
       - heading:
           level: 1
           content: 'Заголовок 1asd'
       - paragraph:
           content: 'Равным образом рамки и место обучения кадров влечет за собой процесс внедрения и модернизации системы обучения кадров, соответствует насущным потребностям. Товарищи! консультация с широким активом позволяет выполнять важные задания по разработке систем массового участия.'
       - table:
+          cellpadding: '1'
+          cellspacing: '1'
           border: '1'
-          cellpadding: '2'
-          cellspacing: '2'
-          align: 'center'
 
-          margin: 10
           tHead:
             - row:
                 nobr: true
                 fontStyle: 'italic'
                 cells:
                     - cell:
+                        padding: 10
                         content: 'Заголовок столбца 1'
                     - cell:
+                        padding: 10
                         content: 'Заголовок столбца 2'
                     - cell:
+                        padding: 10
                         content: 'Заголовок столбца 3'
           tBody:
            - row:
               nobr: true
               cells:
                   - cell:
+                      padding:
                       content: 'Ячейка 1'
                   - cell:
                       fontStyle: 'italic'
@@ -55,7 +59,16 @@ document:
           - item:
               fontWeight: 'bold'
               content: 'В рамках спецификации современных стандартов, независимые государства формируют глобальную экономическую сеть и при этом - ассоциативно распределены по отраслям.'
-  - page:
+   - page:
       - heading:
           level: 2
           content: 'Заголовок 2'
+      - table:
+            border: 1
+            tBody:
+                - row:
+                      cells:
+                          - cell:
+                                content: 'ckontent1'
+                          - cell:
+                                content: 'content 2'

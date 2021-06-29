@@ -103,9 +103,9 @@ abstract class BaseObject implements IObject
     {
 
         $attribute = $this->getAttributes();
-        $objectHtmlCode = "<" . $this->objectTag . " ".$attribute. " >";
+        $objectHtmlCode = " <" . $this->objectTag . " ".$attribute. " > ";
         $objectHtmlCode .= $this->getContent();
-        $objectHtmlCode .= "</" . $this->objectTag . ">";
+        $objectHtmlCode .= " </" . $this->objectTag . " > ";
 
         return $objectHtmlCode;
 
@@ -129,7 +129,7 @@ abstract class BaseObject implements IObject
 
     public function addAttribute(string $attribute, $value)
     {
-        array_push($this->attributes, $attribute . "='" . $value . "'");
+        array_push($this->attributes, $attribute . '="' . $value . '"');
 
     }
     public function setFontWeight(string $textWeight){

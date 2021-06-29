@@ -8,6 +8,11 @@ class Table extends BaseContainer
     {
         $this->setObjectTag('table');
     }
+    public function addRow():TableRow{
+        $row =  new TableRow();
+        $this->addChild($row);
+        return $row;
+    }
 
     public function setHead():TableHead
     {

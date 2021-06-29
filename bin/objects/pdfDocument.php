@@ -36,10 +36,15 @@ class pdfDocument extends Document
     /** @var array<Page> */
     private $pages = [];
 
+    private $isPrintHeader = false;
+    private $isPrintFooter = false;
+
 
     public function getDocument()
     {
-        $this->pdfDocument->setHeaderData($this->headerLogo, $this->logoWidth, $this->headerString);
+        $this->pdfDocument->setPrintHeader($this->isPrintHeader);
+        $this->pdfDocument->setPrintFooter($this->isPrintFooter);
+       $this->pdfDocument->setHeaderData($this->headerLogo, $this->logoWidth, $this->headerString);
         $this->pdfDocument->setFooterData();
 
         $this->pdfDocument->setHeaderFont(array($this->headerFontFamily, $this->headerFontStyle, $this->headerFontSizePt));
@@ -64,14 +69,24 @@ class pdfDocument extends Document
         foreach ($this->pages as $page) {
             $this->pdfDocument->AddPage();
             $html  = $page->generateObject();
-            var_dump($html);
             $this->pdfDocument->writeHTML($html,true, false, false, false, '');
         }
+        $this->pdfDocument->lastPage();
 
-        ob_end_clean();
+        if (ob_get_contents()) ob_end_clean();
         $this->pdfDocument->Output($this->docName, 'I');
 
     }
+
+    public function setPrintHeader(bool $value){
+        $this->isPrintHeader = $value;
+    }
+
+    public function setPrintFooter(bool $value){
+        $this->isPrintFooter = $value;
+    }
+
+
 
     public function setName(string $name)
     {
