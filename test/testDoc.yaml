@@ -21,6 +21,7 @@ document:
                 fontStyle: 'italic'
                 cells:
                     - cell:
+
                         padding: 10
                         content: 'Заголовок столбца 1'
                     - cell:

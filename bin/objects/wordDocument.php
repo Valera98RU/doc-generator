@@ -20,6 +20,9 @@ class wordDocument extends  Document
     }
 
 
+    public function addPage():wordPage{
+        return new wordPage($this->phpWord);
+    }
 
     private function saveAndUploadFromOOXML(){
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($this->phpWord, 'Word2007');
