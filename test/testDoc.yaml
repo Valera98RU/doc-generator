@@ -1,5 +1,8 @@
 document:
   fontSize: 10
+  name: 'testBlank'
+  head:
+    title: 'title test blank'
   pages:
    - page:
       - heading:

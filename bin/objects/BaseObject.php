@@ -45,7 +45,7 @@ abstract class BaseObject implements IObject
     /**
      * @param mixed $margin
      */
-    public function setMargin($margin): void
+    public function setMargin(string $margin): void
     {
         $this->margin = $margin;
         $this->addStyleParameter('margin',$margin."px");

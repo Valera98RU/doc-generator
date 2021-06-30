@@ -38,5 +38,12 @@
   "charOff": "setCharOff",
   "valign": "setValign",
   "cell": "addCell",
-  "fontSize": "setFontsize"
+  "fontSize": "setFontsize",
+  "textColor": "setTextColor",
+  "titleColor": "setTitleColor",
+  "text": "setText",
+  "logo": "setLogo",
+  "fontFamily": "setFontFamily"
+
+
 }

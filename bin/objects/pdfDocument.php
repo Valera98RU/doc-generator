@@ -5,26 +5,12 @@ class pdfDocument extends Document
 {
     use pdfDoc;
 
-    private $headerLogo = '';
-    private $logoWidth = 0;
-    private $headerTitle = '';
-    private $headerString = '';
-    private $headerTitleColor = array(255, 255, 255);
-    private $headerTextColor = array(255, 255, 255);
-    private $footerLineColor = array(255, 255, 255);
-    private $footerTextColor = array(255, 255, 255);
-    private $footerFontFamily = PDF_FONT_NAME_DATA;
-    private $footerFontStyle = '';
-    private $footerFontSizePt = PDF_FONT_SIZE_DATA;
-    private $headerFontFamily = PDF_FONT_NAME_MAIN;
-    private $headerFontStyle = '';
-    private $headerFontSizePt = PDF_FONT_SIZE_MAIN;
+
+
     private $monospacedFont = PDF_FONT_MONOSPACED;
     private $marginLeft = PDF_MARGIN_LEFT;
     private $marginTop = PDF_MARGIN_TOP;
     private $marginRight = PDF_MARGIN_RIGHT;
-    private $headerMargin = PDF_MARGIN_HEADER;
-    private $footerMargin = PDF_MARGIN_FOOTER;
     private $autoPageBreak = true;
     private $imageScaleRatio = PDF_IMAGE_SCALE_RATIO;
     private $fontSubsetting = true;
@@ -33,6 +19,10 @@ class pdfDocument extends Document
     private $fontSize = 14;
     private $fontFile = '';
     private $docName = 'pdfDoc.pdf';
+    /** @var pdfHead */
+    private $head;
+    /** @var pdfFooter */
+    private $footer;
     /** @var array<Page> */
     private $pages = [];
 
@@ -42,19 +32,26 @@ class pdfDocument extends Document
 
     public function getDocument()
     {
+
+        if($this->head){
+            $this->head->generateObject();
+
+
+        }
+
+        if($this->footer){
+            $this->footer->generateObject();
+        }
+
+
         $this->pdfDocument->setPrintHeader($this->isPrintHeader);
         $this->pdfDocument->setPrintFooter($this->isPrintFooter);
-       $this->pdfDocument->setHeaderData($this->headerLogo, $this->logoWidth, $this->headerString);
-        $this->pdfDocument->setFooterData();
 
-        $this->pdfDocument->setHeaderFont(array($this->headerFontFamily, $this->headerFontStyle, $this->headerFontSizePt));
-        $this->pdfDocument->setHeaderFont(array($this->footerFontFamily, $this->footerFontStyle, $this->footerFontSizePt));
 
         $this->pdfDocument->SetDefaultMonospacedFont($this->monospacedFont);
 
         $this->pdfDocument->SetMargins($this->marginLeft, $this->marginTop, $this->marginRight);
-        $this->pdfDocument->setHeaderMargin($this->headerMargin);
-        $this->pdfDocument->setFooterMargin($this->footerMargin);
+
 
         $this->pdfDocument->SetAutoPageBreak($this->autoPageBreak, PDF_MARGIN_BOTTOM);
 
@@ -137,10 +134,7 @@ class pdfDocument extends Document
         $this->autoPageBreak = $autoPageBreak;
     }
 
-    public function setHeaderMargin(string $margin)
-    {
-        $this->headerMargin = $margin;
-    }
+
 
     public function setFooterMargin(string $margin)
     {
@@ -188,35 +182,6 @@ class pdfDocument extends Document
         $this->pdfDocument->SetKeywords($keyWord);
     }
 
-    public function setHeaderLogo(string $logo)
-    {
-        $this->headerLogo = $logo;
-    }
-
-    public function setHeaderLogoWidth(string $width)
-    {
-        $this->logoWidth = $width;
-    }
-
-    public function setHeaderTitle(string $title)
-    {
-        $this->headerTitle = $title;
-    }
-
-    public function setHeaderString(string $headerString)
-    {
-        $this->headerString = $headerString;
-    }
-
-    public function setHeaderTitleColor(array $color)
-    {
-        $this->headerTitleColor = $color;
-    }
-
-    public function setHeaderTextColor(array $color)
-    {
-        $this->headerTextColor = $color;
-    }
 
     public function setFooterLineColor(array $color)
     {
