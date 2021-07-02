@@ -17,11 +17,12 @@ class wordPage extends Page
 
     public function addTable():wordTable{
         $table = $this->section->addTable();
-        $table = new wordTable($table){
-
-        }
+        $table = new wordTable($table);
+        return $table;
     }
-    public function addList():{
+    public function addList():\ListContainer{
+        $list = new wordList($this->section);
+        return $list;
 
     }
 

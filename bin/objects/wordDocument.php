@@ -7,11 +7,12 @@ class wordDocument extends  Document
 
     private string $docName;
 
+    public function __call($name, $arguments)
+    {
+
+    }
+
     public function getDocument(){
-
-
-
-
 
     }
 
@@ -19,9 +20,16 @@ class wordDocument extends  Document
         $this->docName = $name;
     }
 
+    public function setFontSize(int $size){
+        $this->phpWord->setDefaultFontSize($size);
+    }
+    public function addHead(){
+        //$this->phpWord->;
+    }
 
-    public function addPage():wordPage{
-        return new wordPage($this->phpWord);
+
+    public function addPage():\docGenerator\bin\objects\word\wordPage{
+        return new \docGenerator\bin\objects\word\wordPage($this->phpWord);
     }
 
     private function saveAndUploadFromOOXML(){

@@ -18,8 +18,10 @@ class wordRow extends TableRow
         $this->row = $row;
     }
 
-    public function addCell(){
+    public function addCell():\Cell{
 
-        $this->row->addCell()
+      $cell =  $this->row->addCell();
+      $cell = new wordCell($cell);
+      return $cell;
     }
 }

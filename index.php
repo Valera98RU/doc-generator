@@ -10,7 +10,7 @@ $loader->setTempDirectory(__DIR__ . '/temp');
 $loader->register();
 $loader->rebuild();
 
-$docGenerator = new docGenerator\bin\docGenerator(\docGenerator\bin\docGenerator::PDF_DOC_TYPE);
+$docGenerator = new docGenerator\bin\docGenerator(\docGenerator\bin\docGenerator::WORD_DOC_TYPE);
 
 
 $docGenerator->generateDocument("test/testDoc.yaml");

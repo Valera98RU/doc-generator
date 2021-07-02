@@ -6,6 +6,7 @@ use Exception;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 use Symfony\Component\Yaml\Yaml;
+use docGenerator\bin\factories;
 
 
 class docGenerator
@@ -20,7 +21,7 @@ class docGenerator
 
     public function __construct(string $docType){
         $docGeneratorFactoryName = $docType."DocGeneratorFactory";
-        $docGeneratorFactory = new pdfDocGeneratorFactory();
+        $docGeneratorFactory = new factories\wordDocGeneratorFactory();
         $this->docGenerator = $docGeneratorFactory->createGenerator();
     }
 
